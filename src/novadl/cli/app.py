@@ -1,3 +1,5 @@
+import sys
+
 import typer
 
 from novadl import __version__
@@ -12,15 +14,17 @@ from novadl.cli.commands import (
     update,
     version,
 )
+from novadl.cli.menu import run as interactive_menu
 from novadl.presentation.console import console
 from novadl.presentation.display import show_welcome
 
 app = typer.Typer(
     name="novadl",
     help="NovaDL - أداة تحميل فيديوهات وصوت من الإنترنت من سطر الأوامر.",
-    no_args_is_help=True,
+    no_args_is_help=False,
     rich_markup_mode="rich",
     pretty_exceptions_show_locals=False,
+    add_completion=False,
 )
 
 app.command(name="download")(download)
@@ -35,8 +39,12 @@ app.command(name="doctor")(doctor)
 
 
 def main() -> None:
-    show_welcome()
-    app()
+    if len(sys.argv) <= 1:
+        show_welcome()
+        interactive_menu()
+    else:
+        show_welcome()
+        app()
 
 
 if __name__ == "__main__":

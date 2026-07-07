@@ -1,127 +1,86 @@
-# NovaDL
+<div align="center">
+  <h1>NovaDL</h1>
+  <p><strong>أداة تحميل فيديوهات وصوت من الإنترنت</strong></p>
+  <p>
+    <a href="https://github.com/B5d2z/NovaDL/releases"><img src="https://img.shields.io/badge/version-1.0.0-blue" alt="Version"></a>
+    <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-%3E%3D3.8-green" alt="Python"></a>
+    <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="License"></a>
+    <a href="https://github.com/B5d2z/NovaDL"><img src="https://img.shields.io/github/stars/B5d2z/NovaDL?style=social" alt="Stars"></a>
+  </p>
+  <p>YouTube · TikTok · Instagram · Facebook · X · Vimeo · Reddit · Twitch · SoundCloud · <a href="SUPPORTED_SITES.md">1000+</a></p>
+</div>
 
-أداة تحميل فيديوهات وصوت من الإنترنت. تدعم YouTube، TikTok، Instagram، Facebook، X (Twitter)، Vimeo، Reddit، Twitch، SoundCloud، وأكثر من [1000 موقع](SUPPORTED_SITES.md).
+---
 
-مبنية على [yt-dlp](https://github.com/yt-dlp/yt-dlp).
-
-## المميزات
-
-- **تحميل فيديو وصوت** — من جميع المواقع
-- **استخراج الصوت** — MP3, M4A, Opus, FLAC, WAV
-- **اختيار الجودة** — Best, 1080p, 720p, 480p, 360p, Worst
-- **قوائم تشغيل** — تحميل قنوات وقوائم كاملة
-- **ترجمة** — تحميل ودمج الترجمة
-- **صور مصغرة** — تحميل الصورة المصغرة
-- **استكمال التحميل** — عند الانقطاع
-- **كوكيز** — تحميل من حسابات خاصة
-- **بروكسي** — توجيه التحميل عبر وكيل
-- **سجل التحميل** — تتبع التحميلات السابقة
-- **إعدادات** — حفظ الإعدادات
-- **تحديث yt-dlp** — من سطر الأوامر
-- **فحص FFmpeg** — مع دليل تثبيت
-- **قائمة تفاعلية** — اختيار بالأرقام
-- **شريط تقدم** — سرعة، وقت متبقي، حجم الملف
-
-## المتطلبات
-
-- Python 3.8 أو أحدث
-- [FFmpeg](https://ffmpeg.org/) (مطلوب لاستخراج الصوت وتحويل الصيغ)
-
-## التشغيل السريع
+### التشغيل السريع
 
 ```bash
 git clone https://github.com/B5d2z/NovaDL.git
 cd novadl
 python run.py
 ```
+> **Windows:** انقر مرتين على `NovaDL.bat` — لا يحتاج أوامر.
 
-**Windows:** انقر مرتين على `NovaDL.bat` للتشغيل المباشر.
+### المميزات
 
-## الاستخدام
+| | |
+|---|---|
+| تحميل فيديو وصوت | MP3, M4A, Opus, FLAC, WAV |
+| اختيار الجودة | Best → 1080p → 720p → 360p |
+| قوائم تشغيل + ترجمة + صور مصغرة | استكمال التحميل عند الانقطاع |
+| كوكيز + بروكسي | سجل التحميل + حفظ الإعدادات |
+| قائمة تفاعلية بالأرقام | شريط تقدم مع سرعة ووقت متبقي |
+| دعم 1000+ موقع | يعمل على Windows, macOS, Linux |
 
-شغّل الملف وستظهر لك قائمة تفاعلية:
+### ساعد في نشر المشروع ✨
 
-```bash
-python run.py
+```
+⭐ نجمة على GitHub — تفرق وتساعد غيرك يلقى المشروع
+🍴 Fork — إذا تحب تطور أو تعدل
+💬 مشاركة — مع مهتمين بالتقنية
 ```
 
-اختر رقم المنصة، فيديو أو صوت، أدخل الرابط، اختر الجودة.
+إذا استفدت من NovaDL، **حط نجمة** ⭐ على [GitHub](https://github.com/B5d2z/NovaDL). هذا يشجع ويوسع الانتشار.
 
-### الخيارات
+### المتطلبات
 
-| الخيار | الاختصار | الوصف |
-|--------|----------|-------|
-| `--output-dir` | `-o` | مجلد الحفظ |
-| `--quality` | `-q` | جودة الفيديو |
-| `--format` | `-f` | صيغة المخرج (mp4, mkv, webm) |
-| `--audio-only` | `-a` | صوت فقط |
-| `--audio-format` | | صيغة الصوت |
-| `--audio-quality` | | جودة الصوت بـ kbps |
-| `--subtitles` | `-s` | تحميل الترجمة |
-| `--sub-langs` | | رموز اللغات (مفصولة بفواصل) |
-| `--embed-subs` | | دمج الترجمة |
-| `--thumbnail` | `-t` | الصورة المصغرة |
-| `--cookies` | `-c` | مسار ملف الكوكيز |
-| `--proxy` | `-p` | رابط البروكسي |
+- Python ≥ 3.8
+- [FFmpeg](https://ffmpeg.org/) (للاستخراج الصوتي، شغّل `python run.py doctor`)
 
-## الإعدادات
+### الإعدادات
 
-تُحفظ في `~/.config/novadl/config.json`.
+`~/.config/novadl/config.json`
 
 ```bash
-python run.py config                        # عرض الكل
-python run.py config output_dir             # عرض مفتاح معين
-python run.py config output_dir "~/Videos"  # تعيين قيمة
+python run.py config                          # عرض الكل
+python run.py config output_dir "~/Videos"    # تغيير مسار الحفظ
 ```
 
-| المفتاح | القيمة الافتراضية | الوصف |
-|---------|-------------------|-------|
-| `output_dir` | `~/Videos/NovaDL` | مجلد الحفظ |
-| `proxy` | — | البروكسي الافتراضي |
-| `cookies` | — | ملف الكوكيز الافتراضي |
-| `audio_format` | `mp3` | صيغة الصوت |
-| `audio_quality` | `192` | جودة الصوت |
+### الأوامر
 
-## هيكل المشروع
+| الأمر | الوظيفة |
+|-------|---------|
+| `download` | تحميل فيديو |
+| `audio` | استخراج صوت |
+| `info` | معلومات الرابط |
+| `config` | إعدادات |
+| `update` | تحديث yt-dlp |
+| `history` | سجل التحميلات |
+| `doctor` | تشخيص النظام |
+
+### هيكل المشروع
 
 ```
 novadl/
-├── run.py            # ملف التشغيل
-├── pyproject.toml
-├── README.md
-├── LICENSE
+├── run.py            # شغّلني
 └── src/novadl/
-    ├── __init__.py   # معلومات الإصدار
-    ├── const.py      # ثوابت، استثناءات، تسجيل
-    ├── core.py       # الكيانات والواجهات وحالات الاستخدام
-    ├── infra.py      # yt-dlp، الإعدادات، السجل، FFmpeg
-    ├── ui.py         # واجهة المستخدم (Rich)
-    └── cli.py        # الأوامر + القائمة التفاعلية + التطبيق
+    ├── cli.py        # 9 أوامر + قائمة تفاعلية
+    ├── core.py       # كيانات وحالات استخدام
+    ├── infra.py      # yt-dlp + إعدادات + سجل
+    ├── ui.py         # واجهة المستخدم
+    └── const.py      # ثوابت
 ```
 
-## المساهمة
+### الترخيص
 
-نرحب بالمساهمات! إذا عندك فكرة أو وجدت مشكلة، افتح Issue أو Pull Request.
-
-## الأسئلة الشائعة
-
-**س: هل أحتاج FFmpeg؟**
-ج: نعم لاستخراج الصوت. شغّل `python run.py doctor` لتعليمات التثبيت.
-
-**س: هل أقدر أحمل فيديوهات خاصة؟**
-ج: نعم، استخدم `--cookies` مع ملف كوكيز من متصفحك.
-
-**س: المنصات المدعومة؟**
-ج: Windows، macOS، Linux.
-
-## المواقع المدعومة
-
-لائحة بجميع المواقع: [SUPPORTED_SITES.md](SUPPORTED_SITES.md)
-
-## الترخيص
-
-MIT — راجع [LICENSE](LICENSE).
-
-## المطور
-
-**B5t Alanzi** — [GitHub](https://github.com/B5d2z) | [X](https://x.com/B5d2z)
+MIT — [B5t Alanzi](https://github.com/B5d2z) · [@B5d2z](https://x.com/B5d2z)

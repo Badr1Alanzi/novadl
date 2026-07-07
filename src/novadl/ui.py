@@ -13,7 +13,7 @@ from novadl.const import APP_NAME, APP_VERSION
 from novadl.core import DownloadResult, MediaInfo, MediaType, PlaylistInfo
 
 novadl_theme = Theme({"info": "bold cyan", "success": "bold green", "warning": "bold yellow", "error": "bold red", "title": "bold white", "path": "blue", "url": "underline blue", "dim": "dim white", "highlight": "magenta"})
-console = Console(theme=novadl_theme, highlight=False)
+console = Console(theme=novadl_theme, highlight=False, legacy_windows=False)
 
 
 def show_welcome() -> None:
@@ -72,11 +72,11 @@ def _show_playlist(info: PlaylistInfo) -> None:
 
 def show_download_result(result: DownloadResult) -> None:
     if result.success:
-        console.print(f"[success]✓ Downloaded:[/success] {result.title}")
+        console.print(f"[success]OK Downloaded:[/success] {result.title}")
         console.print(f"  [dim]Path:[/dim] [path]{result.file_path}[/path]")
         console.print(f"  [dim]Size:[/dim] {_fmt_size(result.file_size)}")
     else:
-        console.print(f"[error]✗ Failed:[/error] {result.title}")
+        console.print(f"[error]FAIL Failed:[/error] {result.title}")
         console.print(f"  [error]Reason:[/error] {result.error_message}")
     console.print()
 
@@ -117,8 +117,8 @@ def show_diagnosis(ffmpeg_installed: bool, ffmpeg_version: Optional[str], yt_dlp
     t.add_column("Component", style="cyan")
     t.add_column("Status", style="bold")
     t.add_column("Version", style="white")
-    yt = "[success]✓[/success]" if yt_dlp_version != "unknown" else "[error]✗[/error]"
-    ff = "[success]✓[/success]" if ffmpeg_installed else "[warning]✗ Not found[/warning]"
+    yt = "[success]OK[/success]" if yt_dlp_version != "unknown" else "[error]FAIL[/error]"
+    ff = "[success]OK[/success]" if ffmpeg_installed else "[warning]FAIL Not found[/warning]"
     t.add_row("yt-dlp", yt, yt_dlp_version)
     t.add_row("FFmpeg", ff, ffmpeg_version or "N/A")
     console.print(t)

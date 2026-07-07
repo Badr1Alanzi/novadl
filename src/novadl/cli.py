@@ -114,7 +114,7 @@ def update() -> None:
     try:
         with console.status("[cyan]Updating yt-dlp...[/cyan]"):
             updated = _update_uc.execute()
-        console.print("[success]✓ yt-dlp updated successfully[/success]" if updated else "[info]yt-dlp is already up to date[/info]")
+        console.print("[success]OK yt-dlp updated successfully[/success]" if updated else "[info]yt-dlp is already up to date[/info]")
     except NovaDLError as e:
         console.print(f"[error]Error:[/error] {e}")
         raise typer.Exit(1)
@@ -124,7 +124,7 @@ def config(key: Optional[str] = typer.Argument(None, help="Key to view or set"),
     try:
         if key and value:
             _config.set(key, value)
-            console.print(f"[success]✓ Set {key} = {value}[/success]")
+            console.print(f"[success]OK Set {key} = {value}[/success]")
         elif key:
             v = _config.get(key)
             console.print(f"[info]{key}[/info] = [white]{v}[/white]" if v is not None else f"[dim]No value set for '{key}'[/dim]")
@@ -149,7 +149,7 @@ def history() -> None:
 
 def clear_history() -> None:
     _history.clear()
-    console.print("[success]✓ Download history cleared[/success]")
+    console.print("[success]OK Download history cleared[/success]")
 
 
 def doctor() -> None:
@@ -191,7 +191,7 @@ def _change_path() -> None:
     r = Path(p).resolve()
     r.mkdir(parents=True, exist_ok=True)
     _config.set("output_dir", str(r))
-    console.print(f"[success]✓ Save path set: {r}[/success]")
+    console.print(f"[success]OK Save path set: {r}[/success]")
 
 
 def _choose_quality(audio_only: bool = False) -> tuple[str, str]:
